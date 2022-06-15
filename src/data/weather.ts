@@ -50,11 +50,11 @@ interface WeatherEntityAttributes extends HassEntityAttributeBase {
   visibility?: number;
   wind_bearing?: number | string;
   wind_speed?: number;
-  precipitation_unit_of_measurement: string;
-  pressure_unit_of_measurement: string;
-  temperature_unit_of_measurement: string;
-  visibility_unit_of_measurement: string;
-  wind_speed_unit_of_measurement: string;
+  precipitation_unit: string;
+  pressure_unit: string;
+  temperature_unit: string;
+  visibility_unit: string;
+  wind_speed_unit: string;
 }
 
 export interface WeatherEntity extends HassEntityBase {
@@ -196,15 +196,15 @@ export const getWeatherUnit = (
 ): string => {
   switch (measure) {
     case "visibility":
-      return stateObj.attributes.visibility_unit_of_measurement || "";
+      return stateObj.attributes.visibility_unit || "";
     case "precipitation":
-      return stateObj.attributes.precipitation_unit_of_measurement || "";
+      return stateObj.attributes.precipitation_unit || "";
     case "pressure":
-      return stateObj.attributes.pressure_unit_of_measurement || "";
+      return stateObj.attributes.pressure_unit || "";
     case "temperature":
-      return stateObj.attributes.temperature_unit_of_measurement || "";
+      return stateObj.attributes.temperature_unit || "";
     case "wind_speed":
-      return stateObj.attributes.wind_speed_unit_of_measurement || "";
+      return stateObj.attributes.wind_speed_unit || "";
     case "humidity":
     case "precipitation_probability":
       return "%";
